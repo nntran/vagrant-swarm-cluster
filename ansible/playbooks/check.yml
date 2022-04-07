@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    # https://docs.ansible.com/ansible/latest/plugins/lookup/inventory_hostnames.html
+    - name: Show all the hosts in inventory
+      debug:
+        msg: "{{ item }}"
+      with_inventory_hostnames:
+        - all
+      tags:
+        - check

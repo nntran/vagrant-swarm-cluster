@@ -1,0 +1,24 @@
+---
+- name: Create the cluster
+  include_tasks: setup.yml
+  when: node == "master"
+  tags:
+    - setup
+
+- name: Generate short-lived join token
+  include_tasks: token.yml
+  when: node == "master"
+  tags:
+    - token
+
+- name: Join the cluster as worker
+  include_tasks: join.yml
+  when: node == "worker"
+  tags:
+    - join
+
+- name: Show cluster status
+  include_tasks: status.yml
+  when: node == "master"
+  tags:
+    - status

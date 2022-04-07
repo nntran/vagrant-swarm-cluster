@@ -1,0 +1,12 @@
+---
+- name: Get token for worker node join
+  set_fact:
+    join_cmd: "{{ hostvars['vm-swarm-1']['worker_join_cmd'] }}"
+
+- name: Join the cluster as worker
+  command: "{{ join_cmd }}"
+  when:
+    - join_cmd is defined and join_cmd != ""
+  register: out
+
+- debug: var=out

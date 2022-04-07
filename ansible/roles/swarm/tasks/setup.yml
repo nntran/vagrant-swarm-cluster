@@ -1,0 +1,14 @@
+---
+# Initialize Swarm cluster
+- name: Initialize Docker Swarm cluster
+  command: docker swarm init --advertise-addr {{ ansible_host }}
+  # args:
+  #   creates: /etc/docker/{{ swarm_init_file }}
+  register: init_cmd_out
+  # when: not file.stat.exists
+
+- debug: var=init_cmd_out
+
+- name: Set init command fact
+  set_fact:
+    init_cmd: "{{ init_cmd_out.stdout }}"

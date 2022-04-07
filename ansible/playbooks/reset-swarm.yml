@@ -1,0 +1,17 @@
+# Uninstall kubernetes cluster on master and worker hosts
+---
+- hosts: worker
+  tasks:
+    # Remove Kubernetes cluster
+    - name: Leave the Swarm cluster
+      shell: |
+        docker swarm leave --force
+      ignore_errors: yes
+
+- hosts: master
+  tasks:
+    # Remove Kubernetes cluster
+    - name: Leave the Swarm cluster
+      shell: |
+        docker swarm leave --force
+      ignore_errors: yes

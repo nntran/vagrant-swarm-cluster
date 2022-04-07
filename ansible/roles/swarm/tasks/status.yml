@@ -1,0 +1,8 @@
+---
+- name: Cluster nodes
+  shell: docker node ls
+  register: status
+
+#- debug: var=status
+- debug:
+    var: status

@@ -1,0 +1,12 @@
+---
+# Generate join command for joining the node to the Swarm cluster and store the command in the variable named join_cmd_worker
+- name: Generating token for worker to join the cluster
+  shell: docker swarm join-token worker | grep 'docker swarm join'
+  register: join_cmd_worker
+
+- name: Display join command as worker
+  debug: var=join_cmd_worker.stdout
+
+- name: Set the join command for worker
+  set_fact:
+    worker_join_cmd: "{{ join_cmd_worker.stdout }}"
