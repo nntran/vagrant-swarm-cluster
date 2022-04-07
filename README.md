@@ -147,56 +147,11 @@ The last task will take a few minutes.
 
 3. Create the Docker Swarm cluster
 
+The following command will install common and docker packages first then initialize the Swarm cluster. 
+
 ```
 ansible-playbook -i cluster.yml ansible/site.yml
 ```
-
-```
-...
-< TASK [swarm : debug] >
- ---------------------- 
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-
-ok: [vm-swarm-1] => {
-    "status": {
-        "changed": true,
-        "cmd": "docker node ls",
-        "delta": "0:00:00.053072",
-        "end": "2022-04-07 16:16:50.307934",
-        "failed": false,
-        "msg": "",
-        "rc": 0,
-        "start": "2022-04-07 16:16:50.254862",
-        "stderr": "",
-        "stderr_lines": [],
-        "stdout": "ID                            HOSTNAME     STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION\ntgmi83fkhb19wcpqx5d6r9njz *   vm-swarm-1   Ready     Active         Leader           20.10.13\ngcoy7ibsjyt63dq9lp2mzubu2     vm-swarm-2   Ready     Active                          20.10.13\nlkixpe8emwzt2cae4iqchivok     vm-swarm-3   Ready     Active                          20.10.13",
-        "stdout_lines": [
-            "ID                            HOSTNAME     STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION",
-            "tgmi83fkhb19wcpqx5d6r9njz *   vm-swarm-1   Ready     Active         Leader           20.10.13",
-            "gcoy7ibsjyt63dq9lp2mzubu2     vm-swarm-2   Ready     Active                          20.10.13",
-            "lkixpe8emwzt2cae4iqchivok     vm-swarm-3   Ready     Active                          20.10.13"
-        ]
-    }
-}
- ____________ 
-< PLAY RECAP >
- ------------ 
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-
-vm-swarm-1                 : ok=12   changed=3    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
-vm-swarm-2                 : ok=5    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
-vm-swarm-3                 : ok=5    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
-```
-
-Now you can go to take a coffee and come back later (5-10 minutes).
 
 4. Check your cluster status
 
